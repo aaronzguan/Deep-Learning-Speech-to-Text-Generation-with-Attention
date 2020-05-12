@@ -4,18 +4,18 @@ This is my code for the Kaggle Competition for the CMU-11785 Introduction to Dee
 
 ## Data
 
-The data can be downloaded at [data](https://www.kaggle.com/c/11-785-s20-hw4p2/data)， which is WSJ dataset.
+The data can be downloaded at [data](https://www.kaggle.com/c/11-785-s20-hw4p2/data), which is WSJ dataset.
 
 The data is the mel-spectrograms that have 40 band frequencies for each time step of the speech data, whose dimensions are [frames, time step, 40]. The labels are the transcripts, which are arranged in the same order as the utterances.
 
 ## Architecture
 
-This model is developed based on the [Listen, Attend and Spell](https://arxiv.org/pdf/1508.01211.pdf) paper.
+This character-based model is developed based on the [Listen, Attend and Spell](https://arxiv.org/pdf/1508.01211.pdf) paper.
 
-The Listener consists of a Pyramidal Bi-LSTM Network structure that takes in the given utterances and compresses it to produce high-level representations for the Speller network. The Listener has one Bi-LSTM layer and three pBLSTM layers, and each layer has 256 hidden units. The Locked Dropout with dropout probability 0.5 is applied between each LSTM layer.
+The **Listener** consists of a Pyramidal Bi-LSTM Network structure that takes in the given utterances and compresses it to produce high-level representations for the Speller network. The Listener has one Bi-LSTM layer and three pBLSTM layers, and each layer has 256 hidden units. The Locked Dropout with dropout probability 0.5 is applied between each LSTM layer.
 
 
-The attention here is the reimplementation of the Scaled Dot-Product attention. The size of key and value are both 128. In the Speller, two LSTM Cell of 512 hidden units are used and one Attention layer is applied before each LSTM Cell to generate the weighted context. The Locked Dropout with dropout probability 0.5 is applied between the Attention and the LSTM Cell.
+The **attention** here is the reimplementation of the Scaled Dot-Product attention. The size of key and value are both 128. In the **Speller**, two LSTM Cell of 512 hidden units are used and one Attention layer is applied before each LSTM Cell to generate the weighted context. The Locked Dropout with dropout probability 0.5 is applied between the Attention and the LSTM Cell.
 
 One linear layer with 256 filters are used after the Speller, which is followed by a HardTanh activation function. The output linear layer has 34 filters to generate the output probability matrix, which corresponds to the total vocabulary size.
 
