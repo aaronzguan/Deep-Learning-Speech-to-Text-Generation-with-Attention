@@ -10,14 +10,22 @@ import random
 
 
 class LockedDropout(nn.Module):
+    """
+    Apply the same dropout mask to every time step (as in input dropout)
+    """
     def __init__(self, dropout=0.5):
         super().__init__()
         self.dropout = dropout
 
     def forward(self, x):
-        # x: (batch_size, seq_len, feature_size)
+        """
+        :param x: [batch_size, seq_len, feature_size]
+        :return: Masked x [batch_size, seq_len, feature_size]
+        """
+        # During testing, the dropout will not be active
         if not self.training or not self.dropout:
             return x
+        # Define the mask for one time step, then duplicate this mask for every time step
         m = x.data.new(x.size(0), 1, x.size(2)).bernoulli_(1 - self.dropout)
         mask = Variable(m, requires_grad=False) / (1 - self.dropout)
         mask = mask.expand_as(x)
