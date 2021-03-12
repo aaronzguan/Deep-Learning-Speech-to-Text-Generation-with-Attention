@@ -25,7 +25,7 @@ The attention architecture shows as the following:
 
 ## Experiments
 
-The Adam optimizer with default learning rate of 0.001 without weight decay is applied during. The ReduceLROnPlateau with factor of 0.5 is used as the learning rate scheduler. The training is finished at 50 epochs with a teacher forcing 0.8, which is 20% probability using the prediction result while 80% probability using the ground truth in the Speller to predict the next output.
+The Adam optimizer with default learning rate of 0.001 without weight decay is applied. The ReduceLROnPlateau with factor of 0.5 is used as the learning rate scheduler. The training is finished at 50 epochs with a teacher forcing 0.8, which is 20% probability using the prediction result while 80% probability using the ground truth in the Speller to predict the next output.
 
 Then the best model is fine-tuned with teacher forcing ratio 0.6 for another 50 epochs. The optimizer, learning rate, and schedule for the fine-tuning are the same as the setting for the training.
 
