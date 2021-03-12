@@ -1,6 +1,6 @@
 # Deep Learning Speech-to-Text Generation with Attention
 
-This is my code for the Kaggle Competition for the CMU-11785 Introduction to Deep Learning, where I ranked 26/278 (Top 10%). The competition details can be found in [kaggle](https://www.kaggle.com/c/11-785-s20-hw4p2). This is the end-to-end **character-based** network using a combination of Recurrent Neural Networks (RNNs) / Convolutional Neural Networks (CNNs) and Dense Networks for speech to text transcription. It can transcribe a given speech utterance to its corresponding transcript
+This is my code for the Kaggle Competition for the CMU-11785 Introduction to Deep Learning, where I ranked 14/278 (Top 5%). The competition details can be found in [kaggle](https://www.kaggle.com/c/11-785-s20-hw4p2). This is the end-to-end **character-based** network using a combination of Recurrent Neural Networks (RNNs) / Convolutional Neural Networks (CNNs) and Dense Networks for speech to text transcription. It can transcribe a given speech utterance to its corresponding transcript
 
 ## Data
 
